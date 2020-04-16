@@ -1,5 +1,6 @@
 import subprocess
-# Cloning configs from Rufus
+# Testing Cloning configs from Rufus compatibility with EFI:NTFS Driver
+## TODO: Implements extraction of ISO files to Viper Boot partition.
 
 def formatDevice(device):
     subprocess.run(f'umount -f {device}*', shell=True)
@@ -15,8 +16,6 @@ def formatDevice(device):
     subprocess.run(f'mkfs.vfat -F12 -n "UEFI_NTFS" {device}2', shell=True)
     #subprocess.run(f'mkfs -t ntfs -f {device}1', shell=True)
     subprocess.run(f'mkfs.exfat {device}1', shell=True)
-    #subprocess.run(f'cp -R EFI\\ NTFS\\ DRIVER\\ V1.4/* {device}2', shell=True)
     subprocess.run(f'umount {device}', shell=True)
+    subprocess.run(f'dd bs=512 count=1024 if=uefi-ntfs.img of={device}2', shell=True)
 
-#dd bs=512 count=1024 if=path/to/uefi-ntfs.img of={device}4 status=progress
-#dd bs=4M if=path/to/windows7x64.iso of=/dev/sdd1 status=progress oflag=sync
