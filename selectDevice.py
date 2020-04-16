@@ -6,7 +6,7 @@ def selectDevice():
     devices = listDevices()
     for n, device in devices:
         if device['rm'] and device['tran'] == 'usb' and device['type'] == 'disk':
-            print(f'ID: {n} Brand: {device["vendor"]} Model: {device["model"]} Path: {device["path"]}'
+            print(f'ID: {n} Brand: {device["vendor"]} Model: {device["model"]} Path: {device["path"]} '
                   f'Label: {device["label"]} Size: {device["size"]}')
 
     option = int(input('Select a device listed above by ID: '))

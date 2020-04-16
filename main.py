@@ -7,7 +7,7 @@ class App(object):
     def __init__(self):
         self.sDevice = selectDevice()
         self.dPath = self.sDevice['path']
-        datapartType = input('Select type for the data partition. \\n [1] - fat32 \\n [2] - ntfs \\n [3] - ext4 \\n ')
+        datapartType = input('Select type for the data partition. \n [1] - fat32 \n [2] - ntfs \n [3] - ext4 \n [4] - exfat \n ')
         formatDevice(self.dPath, datapartType)
         grubInstall(self.dPath)
         print('DONE!')
